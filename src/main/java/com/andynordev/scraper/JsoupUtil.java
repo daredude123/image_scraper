@@ -17,6 +17,7 @@ public class JsoupUtil {
         }
     }
 
+    //hei på deg!
     private static String checkParameter(String param) {
         if (param != null) {
             return param;
