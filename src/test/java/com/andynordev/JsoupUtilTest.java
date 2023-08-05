@@ -1,6 +1,7 @@
 package com.andynordev;
 
 import com.andynordev.scraper.JsoupUtil;
+import com.andynordev.scraper.ScrapingService;
 import org.jsoup.nodes.Document;
 import org.junit.Assert;
 import org.junit.Before;
@@ -16,9 +17,12 @@ public class JsoupUtilTest {
     }
 
     @Test
-    public void getDocumentTest() {
+    public void get_document_test() {
         Document doc = jsoupUtil.getDocument("https://wikipedia.com/wiki/james_bond");
+        System.out.println("not null");
         Assert.assertNotNull(doc);
+        System.out.println("not empty");
         Assert.assertNotEquals("",doc.body().text());
     }
+
 }
