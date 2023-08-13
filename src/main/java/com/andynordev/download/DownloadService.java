@@ -20,7 +20,7 @@ public class DownloadService {
             }
             return "";
         } catch (IOException e) {
-            // handle exception
+            System.out.println("could not download image.");
         }
         return "";
     }
