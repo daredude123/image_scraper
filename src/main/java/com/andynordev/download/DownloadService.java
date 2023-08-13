@@ -15,6 +15,7 @@ public class DownloadService implements Runnable {
 
     public void run() {
         System.out.println("Downloading file : " + imageUrl);
+        downloadFile(imageUrl);
     }
 
     public String downloadFile(String url) {
