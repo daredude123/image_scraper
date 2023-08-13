@@ -5,7 +5,17 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 
-public class DownloadService {
+public class DownloadService implements Runnable {
+
+    String imageUrl;
+
+    public DownloadService(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public void run() {
+        System.out.println("Downloading file : " + imageUrl);
+    }
 
     public String downloadFile(String url) {
         String[] nameSplit = url.split("/");

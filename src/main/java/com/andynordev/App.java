@@ -11,13 +11,21 @@ public class App
 {
     public static void main( String[] args )
     {
-
+        String[] imageUrls = null;
         if(checkArgs(args)) {
             ScrapingService scrapingService = new ScrapingService();
-            String[] urls = scrapingService.
-
+            for (String url : args) {
+                imageUrls = scrapingService.getImages(url);
+            }
+            if (imageUrls == null || imageUrls.length == 0) {
+                System.out.println("No images to download... Exiting");
+                return;
+            }
+            System.out.printf("Starting download of %s images", imageUrls.length);
+            for (String imageUrl : imageUrls) {
+                
+            }
         }
-        System.out.println("empty parameter. url cannot be empty");
     }
 
     private static boolean checkArgs(String[] args) {
