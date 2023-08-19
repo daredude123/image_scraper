@@ -13,6 +13,9 @@ public class ScrapingService {
 
     public String[] getImages(String url) {
         Document doc = jsoupUtil.getDocument(url);
+        if (doc == null) {
+            return null;
+        }
 
         Elements images = doc.select("[src]");
         String[] arr = new String[images.size()];

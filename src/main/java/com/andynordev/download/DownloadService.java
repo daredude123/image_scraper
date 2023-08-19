@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.net.URL;
 
 public class DownloadService implements Runnable {
-
+    
     String imageUrl;
 
     public DownloadService(String imageUrl) {

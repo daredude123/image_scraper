@@ -7,9 +7,13 @@ import java.net.URISyntaxException;
 
 public class Configuration {
 
-    public static String getCurrentDir() throws URISyntaxException {
+    public static String getCurrentDir() {
 
-        return new File(App.class.getProtectionDomain().getCodeSource().getLocation()
-                .toURI()).getPath();
+        try {
+            return new File(App.class.getProtectionDomain().getCodeSource().getLocation()
+                    .toURI()).getPath();
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

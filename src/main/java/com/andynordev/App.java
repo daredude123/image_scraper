@@ -1,5 +1,6 @@
 package com.andynordev;
 
+import com.andynordev.config.Configuration;
 import com.andynordev.download.DownloadService;
 import com.andynordev.scraper.ScrapingService;
 
@@ -7,7 +8,7 @@ public class App
 {
     public static void main( String[] args )
     {
-
+        System.out.println(Configuration.getCurrentDir());
         String[] imageUrls = null;
         if(checkArgs(args)) {
             ScrapingService scrapingService = new ScrapingService();
