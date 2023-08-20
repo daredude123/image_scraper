@@ -2,7 +2,6 @@ package com.andynordev;
 
 import com.andynordev.config.Configuration;
 import com.andynordev.download.DownloadService;
-import com.andynordev.enums.PictureExt;
 import com.andynordev.scraper.ScrapingService;
 
 public class App
