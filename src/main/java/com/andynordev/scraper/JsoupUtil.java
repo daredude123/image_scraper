@@ -3,11 +3,9 @@ package com.andynordev.scraper;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.sql.SQLOutput;
 
 public class JsoupUtil {
 

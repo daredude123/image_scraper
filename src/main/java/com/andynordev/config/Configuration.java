@@ -3,7 +3,10 @@ package com.andynordev.config;
 import com.andynordev.App;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class Configuration {
 
@@ -14,6 +17,21 @@ public class Configuration {
                     .toURI()).getPath();
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * creates dir or return current directory
+     * @param outputPathParam
+     * @return
+     */
+    public static String createDir(String outputPathParam) throws IOException {
+        try {
+            return Files.createDirectories(Paths.get(outputPathParam)).getFileName().toAbsolutePath().toString();
+        } catch (IOException e) {
+            System.out.println("Could not create directory");
+            e.printStackTrace();
+            throw e;
         }
     }
 }

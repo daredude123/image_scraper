@@ -21,18 +21,18 @@ public class DownloadService implements Runnable {
 
     public void run() {
         System.out.println("Downloading file : " + imageUrl);
-        String fileName = downloadFile(imageUrl);
+        try {
+            String fileName = downloadFile(imageUrl);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    public String downloadFile(String url) {
+    public String downloadFile(String url) throws IOException {
         String[] nameSplit = url.split("/");
         String fileName = nameSplit[nameSplit.length-1];
-        try {
-            Files.createDirectories(Paths.get(outputDirectory));
-        } catch (IOException e) {
-            System.out.println("Could not create directory");
-            e.printStackTrace();
-        }
+        outputDirectory = Configuration.createDir(outputDirectory);
+
         try (BufferedInputStream in = new BufferedInputStream(new URL(url).openStream());
              FileOutputStream fileOutputStream = new FileOutputStream(outputDirectory+"/"+fileName)) {
 
