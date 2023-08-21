@@ -13,6 +13,7 @@ public class DownloadService implements Runnable {
     
     String imageUrl;
     String outputDirectory;
+    String fileName;
 
     public DownloadService(String imageUrl, String outputDirectory) {
         this.imageUrl = imageUrl;
@@ -22,7 +23,7 @@ public class DownloadService implements Runnable {
     public void run() {
         System.out.println("Downloading file : " + imageUrl);
         try {
-            String fileName = downloadFile(imageUrl);
+            this.fileName = downloadFile(imageUrl);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

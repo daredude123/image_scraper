@@ -25,13 +25,13 @@ public class Configuration {
      * @param outputPathParam
      * @return
      */
-    public static String createDir(String outputPathParam) throws IOException {
+    public static String createDir(String outputPathParam) {
         try {
             return Files.createDirectories(Paths.get(outputPathParam)).getFileName().toAbsolutePath().toString();
         } catch (IOException e) {
             System.out.println("Could not create directory");
             e.printStackTrace();
-            throw e;
+            throw new RuntimeException(e);
         }
     }
 }
