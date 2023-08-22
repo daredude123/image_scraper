@@ -7,7 +7,6 @@ import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
 
 public class ConfigurationTest {
 
@@ -20,10 +19,10 @@ public class ConfigurationTest {
     }
 
     @Test
-    public void paramDir() {
+    public void paramDirTest() {
         String dir = Configuration.createDir(testDir);
         System.out.println(dir);
-        Assert.assertNotNull(dir);
+        Assert.assertEquals(testDir, dir);
         cleanUp();
     }
 
