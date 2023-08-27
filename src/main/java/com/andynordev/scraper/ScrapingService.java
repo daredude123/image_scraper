@@ -1,5 +1,7 @@
 package com.andynordev.scraper;
 
+import com.andynordev.config.Configuration;
+import com.andynordev.download.DownloadService;
 import com.andynordev.enums.PictureExt;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -7,6 +9,7 @@ import org.jsoup.select.Elements;
 public class ScrapingService {
 
     JsoupUtil jsoupUtil;
+    DownloadService downloadService;
 
     public ScrapingService() {
         this.jsoupUtil = new JsoupUtil();
@@ -18,11 +21,11 @@ public class ScrapingService {
             return null;
         }
 
-        Elements images = doc.select("[src]");
+        Elements images = doc.getElementsByTag("img");
         String[] arr = new String[images.size()];
         for (int i = 0; i< arr.length;i++) {
             String absSrc = images.get(i).attr("abs:src");
-            //Todo add check for file extensions. IMAGES ONLY!!!
+            arr[i] = absSrc;
         }
         return arr;
     }

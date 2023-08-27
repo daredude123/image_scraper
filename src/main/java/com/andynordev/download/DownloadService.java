@@ -30,6 +30,7 @@ public class DownloadService implements Runnable {
     }
 
     public String downloadFile(String url) throws IOException {
+        System.out.println("downloading " +url);
         String[] nameSplit = url.split("/");
         String fileName = nameSplit[nameSplit.length-1];
         outputDirectory = Configuration.createDir(outputDirectory);
@@ -42,11 +43,13 @@ public class DownloadService implements Runnable {
             while ((bytesRead = in.read(dataBuffer, 0, 1024)) != -1) {
                 fileOutputStream.write(dataBuffer, 0, bytesRead);
             }
+            System.out.println("finished " +url);
             return fileName;
         } catch (IOException e) {
             System.out.println("could not download image.");
             e.printStackTrace();
         }
+        System.out.println("finished " +url);
         return fileName;
     }
 }

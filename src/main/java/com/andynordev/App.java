@@ -4,12 +4,17 @@ import com.andynordev.config.Configuration;
 import com.andynordev.download.DownloadService;
 import com.andynordev.scraper.ScrapingService;
 
+import javax.swing.text.Style;
+import java.util.Date;
+
 public class App
 {
     static String[] urlList;
     static String saveDirectory;
     public static void main( String[] args )
     {
+        long start = System.currentTimeMillis();
+
         System.out.println(Configuration.getCurrentDir());
         String[] imageUrls = null;
         
@@ -27,6 +32,8 @@ public class App
                 new Thread(new DownloadService(imageUrl, saveDirectory)).start();
             }
         }
+        long end = System.currentTimeMillis();
+        System.out.println("Execution time: "+ (double) (end-start)/1000 + " seconds");
     }
 
     private static boolean checkArgs(String[] args) {

@@ -19,6 +19,7 @@ public class ScrapingServiceTest {
         String[] images = scrapingService.getImages("https://wikipedia.com/wiki/james_bond");
         for (String x : images) {
             System.out.println(x);
+            Assert.assertNotNull(x);
         }
         Assert.assertNotEquals(0,images.length);
     }
