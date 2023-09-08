@@ -13,8 +13,6 @@ public class App
     static String saveDirectory;
     public static void main( String[] args )
     {
-        long start = System.currentTimeMillis();
-
         System.out.println(Configuration.getCurrentDir());
         String[] imageUrls = null;
         
@@ -32,8 +30,6 @@ public class App
                 new Thread(new DownloadService(imageUrl, saveDirectory)).start();
             }
         }
-        long end = System.currentTimeMillis();
-        System.out.println("Execution time: "+ (double) (end-start)/1000 + " seconds");
     }
 
     private static boolean checkArgs(String[] args) {
