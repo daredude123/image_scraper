@@ -6,6 +6,9 @@ import com.andynordev.scraper.ScrapingService;
 
 import javax.swing.text.Style;
 import java.util.Date;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
 
 public class App
 {
@@ -26,8 +29,10 @@ public class App
                 return;
             }
             System.out.printf("Starting download of %s images", imageUrls.length);
+            ThreadPoolExecutor tpe = (ThreadPoolExecutor) Executors.newCachedThreadPool();
             for (String imageUrl : imageUrls) {
-                new Thread(new DownloadService(imageUrl, saveDirectory)).start();
+                tpe.execute(new DownloadService(imageUrl,saveDirectory));
+                //new Thread(new DownloadService(imageUrl, saveDirectory)).start();
             }
         }
     }
