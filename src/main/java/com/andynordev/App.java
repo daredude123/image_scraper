@@ -31,6 +31,7 @@ public class App
             System.out.printf("Starting download of %s images", imageUrls.length);
             ThreadPoolExecutor tpe = (ThreadPoolExecutor) Executors.newCachedThreadPool();
             for (String imageUrl : imageUrls) {
+
                 tpe.execute(new DownloadService(imageUrl,saveDirectory));
                 //new Thread(new DownloadService(imageUrl, saveDirectory)).start();
             }

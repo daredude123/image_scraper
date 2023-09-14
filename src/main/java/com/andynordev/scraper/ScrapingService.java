@@ -24,7 +24,7 @@ public class ScrapingService {
         Elements images = doc.getElementsByTag("img");
         String[] arr = new String[images.size()];
         for (int i = 0; i< arr.length;i++) {
-            String absSrc = images.get(i).attr("abs:src");
+            String absSrc = images.get(i).attr("abs:src").isEmpty() ? images.get(i).attr("abs:data-src") : images.get(i).attr("abs:src");
             arr[i] = absSrc;
         }
         return arr;
