@@ -23,4 +23,10 @@ public class ScrapingServiceTest {
         }
         Assert.assertNotEquals(0,images.length);
     }
+
+    @Test
+    public void test_empty_url() {
+        String[] images = scrapingService.getImages("");
+        Assert.assertNull(images);
+    }
 }
