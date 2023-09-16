@@ -25,6 +25,7 @@ public class App
                 System.out.println("No images to download... Exiting");
                 return;
             }
+            checkForDuplicateNames(imageUrls);
             System.out.printf("Starting download of %s images", imageUrls.length);
             //ThreadPoolExecutor tpe = (ThreadPoolExecutor) Executors.newCachedThreadPool();
             for (String imageUrl : imageUrls) {
@@ -32,6 +33,19 @@ public class App
                 //tpe.execute(new DownloadService(imageUrl,saveDirectory));
                 new Thread(new DownloadService(imageUrl, saveDirectory)).start();
             }
+        }
+    }
+
+    private static void checkForDuplicateNames(String[] imageUrls) {
+        String tmp = "";
+        for (int i = 0; i < imageUrls.length; i++) {
+            String url = imageUrls[i];
+            String fileName = url.substring(url.lastIndexOf("/"));
+            if (tmp == fileName) {
+                
+            }
+            tmp = fileName;
+
         }
     }
 
