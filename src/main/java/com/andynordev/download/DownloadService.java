@@ -6,8 +6,6 @@ import java.io.BufferedInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 public class DownloadService implements Runnable {
     
@@ -33,6 +31,7 @@ public class DownloadService implements Runnable {
         System.out.println("downloading " +url);
         String[] nameSplit = url.split("/");
         String fileName = nameSplit[nameSplit.length-1];
+        if(fileName.split("."))
         outputDirectory = Configuration.createDir(outputDirectory);
 
         try (BufferedInputStream in = new BufferedInputStream(new URL(url).openStream());
