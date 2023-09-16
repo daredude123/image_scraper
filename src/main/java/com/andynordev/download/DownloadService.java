@@ -1,6 +1,7 @@
 package com.andynordev.download;
 
 import com.andynordev.config.Configuration;
+import com.andynordev.enums.PictureExt;
 
 import java.io.BufferedInputStream;
 import java.io.FileOutputStream;
@@ -31,7 +32,7 @@ public class DownloadService implements Runnable {
         System.out.println("downloading " +url);
         String[] nameSplit = url.split("/");
         String fileName = nameSplit[nameSplit.length-1];
-        if(fileName.split("."))
+
         outputDirectory = Configuration.createDir(outputDirectory);
 
         try (BufferedInputStream in = new BufferedInputStream(new URL(url).openStream());
@@ -50,5 +51,9 @@ public class DownloadService implements Runnable {
         }
         System.out.println("finished " +url);
         return fileName;
+    }
+
+    public boolean allowedExtension(String ext) {
+        return PictureExt.valueOf(fileName.split(".")[1]) != null;
     }
 }
