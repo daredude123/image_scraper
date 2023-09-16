@@ -1,11 +1,9 @@
 package com.andynordev.download;
 
 import com.andynordev.config.Configuration;
-import com.andynordev.enums.PictureExt;
 
 import java.io.BufferedInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.net.URL;
 
 public class DownloadService implements Runnable {
@@ -23,16 +21,20 @@ public class DownloadService implements Runnable {
         System.out.println("Downloading file : " + imageUrl);
         try {
             this.fileName = downloadFile(imageUrl);
-        } catch (IOException e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    public String downloadFile(String url) throws IOException {
+    public String downloadFile(String url) {
         System.out.println("downloading " +url);
         String[] nameSplit = url.split("/");
         String fileName = nameSplit[nameSplit.length-1];
-
+        //String fileExt = !fileName.substring(fileName.lastIndexOf(".")).isEmpty() ? fileName.substring(fileName.lastIndexOf(".")) : "";
+       /** if (!allowedExtension(fileExt)) {
+            System.out.println("File not a valid form. filename: " +fileName);
+            return "";
+        }*/
         outputDirectory = Configuration.createDir(outputDirectory);
 
         try (BufferedInputStream in = new BufferedInputStream(new URL(url).openStream());
@@ -45,15 +47,11 @@ public class DownloadService implements Runnable {
             }
             System.out.println("finished " +url);
             return fileName;
-        } catch (IOException e) {
+        } catch (Exception e) {
             System.out.println("could not download image.");
             e.printStackTrace();
         }
         System.out.println("finished " +url);
         return fileName;
-    }
-
-    public boolean allowedExtension(String ext) {
-        return PictureExt.valueOf(fileName.split(".")[1]) != null;
     }
 }

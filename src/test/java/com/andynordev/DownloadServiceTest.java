@@ -1,6 +1,7 @@
 package com.andynordev;
 
 import com.andynordev.download.DownloadService;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -12,8 +13,5 @@ public class DownloadServiceTest {
     public void setup() {
         downloadService = new DownloadService(testImageUrl, testOutput);
     }
-    @Test
-    public void checkFileExtensionTest() {
-        DownloadService.allowedExtension("jpg");
-    }
+
 }
