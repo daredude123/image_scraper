@@ -25,13 +25,12 @@ public class App
                 System.out.println("No images to download... Exiting");
                 return;
             }
-            checkForDuplicateNames(imageUrls);
             System.out.printf("Starting download of %s images", imageUrls.length);
             //ThreadPoolExecutor tpe = (ThreadPoolExecutor) Executors.newCachedThreadPool();
-            for (String imageUrl : imageUrls) {
-
-                //tpe.execute(new DownloadService(imageUrl,saveDirectory));
-                new Thread(new DownloadService(imageUrl, saveDirectory)).start();
+            for (int i = 0; i < imageUrls.length; i++) {
+                String imageUrl = imageUrls[i];
+                String imageName = i+"_image";
+                new Thread(new DownloadService(imageUrl, saveDirectory, imageName)).start();
             }
         }
     }

@@ -9,9 +9,10 @@ public class DownloadServiceTest {
     DownloadService downloadService;
     String testImageUrl = "https://wiki.image/test/image.jpg";
     String testOutput = "test/";
+    String testName = "navnpåfil";
     @Before
     public void setup() {
-        downloadService = new DownloadService(testImageUrl, testOutput);
+        downloadService = new DownloadService(testImageUrl, testOutput, testName);
     }
 
 }

@@ -11,10 +11,12 @@ public class DownloadService implements Runnable {
     String imageUrl;
     String outputDirectory;
     String fileName;
+    String imageName;
 
-    public DownloadService(String imageUrl, String outputDirectory) {
+    public DownloadService(String imageUrl, String outputDirectory, String imageName) {
         this.imageUrl = imageUrl;
         this.outputDirectory = outputDirectory;
+        this.imageName = imageName;
     }
 
     public void run() {
@@ -28,17 +30,13 @@ public class DownloadService implements Runnable {
 
     public String downloadFile(String url) {
         System.out.println("downloading " +url);
-        String[] nameSplit = url.split("/");
-        String fileName = nameSplit[nameSplit.length-1];
-        //String fileExt = !fileName.substring(fileName.lastIndexOf(".")).isEmpty() ? fileName.substring(fileName.lastIndexOf(".")) : "";
-       /** if (!allowedExtension(fileExt)) {
-            System.out.println("File not a valid form. filename: " +fileName);
-            return "";
-        }*/
-        outputDirectory = Configuration.createDir(outputDirectory);
+        String fileExt = !url.substring(url.lastIndexOf(".")).isEmpty() ? url.substring(url.lastIndexOf(".")) : "";
 
+        outputDirectory = Configuration.createDir(outputDirectory);
+        String fullPath = outputDirectory+"/"+this.imageName+"."+fileExt;
+        System.out.println("saving as : " + fullPath);
         try (BufferedInputStream in = new BufferedInputStream(new URL(url).openStream());
-             FileOutputStream fileOutputStream = new FileOutputStream(outputDirectory+"/"+fileName)) {
+             FileOutputStream fileOutputStream = new FileOutputStream(fullPath)) {
 
             byte[] dataBuffer = new byte[1024];
             int bytesRead;

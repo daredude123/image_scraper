@@ -27,7 +27,6 @@ public class Configuration {
      */
     public static String createDir(String outputPathParam) {
         try {
-            //todo something fucky
             return Files.createDirectories(Paths.get(outputPathParam)).toString();
         } catch (IOException e) {
             System.out.println("Could not create directory");
