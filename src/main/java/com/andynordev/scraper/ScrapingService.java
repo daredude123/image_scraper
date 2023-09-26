@@ -3,30 +3,35 @@ package com.andynordev.scraper;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ScrapingService {
 
     JsoupUtil jsoupUtil;
+    static String[] imageAttrs = {"abs:src", "abs:data-src", "abs:data-srcset", "abs:abs:srcset"};
 
     public ScrapingService() {
         this.jsoupUtil = new JsoupUtil();
     }
 
-    public String[] getImages(String url) {
+    public List<String> getImages(String url) {
         Document doc = jsoupUtil.getDocument(url);
         if (doc == null) {
             return null;
         }
 
         Elements images = doc.getElementsByTag("img");
-        String[] arr = new String[images.size()];
-        for (int i = 0; i< arr.length;i++) {
-            String absSrc = images.get(i).attr("abs:src").isEmpty() ? images.get(i).attr("abs:data-src") : images.get(i).attr("abs:src");
-            if (!absSrc.isEmpty()) {
-                arr[i] = absSrc;
+        ArrayList<String> imageList = new ArrayList();
+        for (int i = 0; i< images.size();i++) {
+            for (String attr : imageAttrs) {
+                String absSrc = images.get(i).attr(attr);
+                if (!absSrc.isEmpty()) {
+                    imageList.add(absSrc);
+                }
             }
         }
-        System.out.println("found ");
-        return arr;
+        return imageList;
     }
 
 }
