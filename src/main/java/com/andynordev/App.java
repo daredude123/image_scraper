@@ -4,6 +4,8 @@ import com.andynordev.config.Configuration;
 import com.andynordev.download.DownloadService;
 import com.andynordev.scraper.ScrapingService;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 
@@ -14,21 +16,20 @@ public class App
     public static void main( String[] args )
     {
         System.out.println(Configuration.getCurrentDir());
-        String[] imageUrls = null;
+        List<String> imageUrls = new ArrayList<>();
         
         if(checkArgs(args)) {
             ScrapingService scrapingService = new ScrapingService();
             for (String url : args[0].split(" ")) {
                 imageUrls = scrapingService.getImages(url);
             }
-            if (imageUrls == null || imageUrls.length == 0) {
+            if (imageUrls == null || imageUrls.size() == 0) {
                 System.out.println("No images to download... Exiting");
                 return;
             }
-            System.out.printf("Starting download of %s images", imageUrls.length);
-            //ThreadPoolExecutor tpe = (ThreadPoolExecutor) Executors.newCachedThreadPool();
-            for (int i = 0; i < imageUrls.length; i++) {
-                String imageUrl = imageUrls[i];
+            System.out.printf("Starting download of %s images", imageUrls.size());
+            for (int i = 0; i < imageUrls.size(); i++) {
+                String imageUrl = imageUrls.get(i);
                 String imageName = i+"_image";
                 new Thread(new DownloadService(imageUrl, saveDirectory, imageName)).start();
             }

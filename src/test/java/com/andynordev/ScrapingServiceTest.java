@@ -5,6 +5,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.List;
+
 public class ScrapingServiceTest {
 
     ScrapingService scrapingService;
@@ -16,17 +18,17 @@ public class ScrapingServiceTest {
 
     @Test
     public void get_document_images() {
-        String[] images = scrapingService.getImages("https://wikipedia.com/wiki/james_bond");
+        List<String> images = scrapingService.getImages("https://wikipedia.com/wiki/james_bond");
         for (String x : images) {
             System.out.println(x);
             Assert.assertNotNull(x);
         }
-        Assert.assertNotEquals(0,images.length);
+        Assert.assertNotEquals(0,images.size());
     }
 
     @Test
     public void test_empty_url() {
-        String[] images = scrapingService.getImages("");
+        List<String> images = scrapingService.getImages("");
         Assert.assertNull(images);
     }
 }

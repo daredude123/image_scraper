@@ -1,0 +1,52 @@
+/home/andreas/java/image_scraper/target/image_scraper-1.0-jar-with-dependencies.jar
+urls:
+https://www.ba.no
+save dir : "/home/andreas/test"
+Starting download of 12 imagesDownloading file : https://r.api.no/local/v3/publications/www.ba.no/gfx/small.svg
+Downloading file : https://www.e-pages.dk/ba_no/7447/teasers/small.jpg
+Downloading file : https://www.e-pages.dk/avisanordland/4215/teasers/small.jpg
+downloading https://www.e-pages.dk/avisanordland/4215/teasers/small.jpg
+Downloading file : https://www.e-pages.dk/ba_no/7447/teasers/small.jpg
+downloading https://www.e-pages.dk/ba_no/7447/teasers/small.jpg
+Downloading file : https://r.acdn.no/brandheader/default/classifieds-eiendom.svg
+downloading https://r.acdn.no/brandheader/default/classifieds-eiendom.svg
+Downloading file : https://www.e-pages.dk/rb_no/6283/teasers/small.jpg
+downloading https://www.e-pages.dk/rb_no/6283/teasers/small.jpg
+Downloading file : https://r.acdn.no/brandheader/default/classifieds-stillingledig.svg
+downloading https://r.acdn.no/brandheader/default/classifieds-stillingledig.svg
+Downloading file : https://www.e-pages.dk/finnmarken/19642/teasers/small.jpg
+downloading https://www.e-pages.dk/finnmarken/19642/teasers/small.jpg
+downloading https://www.e-pages.dk/ba_no/7447/teasers/small.jpg
+downloading https://r.api.no/local/v3/publications/www.ba.no/gfx/small.svg
+Downloading file : https://r.acdn.no/brandheader/default/classifieds-derdubor.svg
+downloading https://r.acdn.no/brandheader/default/classifieds-derdubor.svg
+Downloading file : https://r.api.no/local/v3/publications/www.ba.no/gfx/small-positive.svg
+downloading https://r.api.no/local/v3/publications/www.ba.no/gfx/small-positive.svg
+Downloading file : https://r.api.no/local/v3/publications/www.ba.no/gfx/small.svg
+downloading https://r.api.no/local/v3/publications/www.ba.no/gfx/small.svg
+Downloading file : https://r.acdn.no/brandheader/default/redaktoransvar.svg
+downloading https://r.acdn.no/brandheader/default/redaktoransvar.svg
+saving as : /home/andreas/test/3_image..jpg
+saving as : /home/andreas/test/2_image..jpg
+saving as : /home/andreas/test/0_image..svg
+saving as : /home/andreas/test/1_image..jpg
+saving as : /home/andreas/test/5_image..jpg
+saving as : /home/andreas/test/8_image..svg
+saving as : /home/andreas/test/9_image..svg
+saving as : /home/andreas/test/4_image..jpg
+saving as : /home/andreas/test/6_image..svg
+saving as : /home/andreas/test/7_image..svg
+saving as : /home/andreas/test/11_image..svg
+saving as : /home/andreas/test/10_image..svg
+finished https://r.api.no/local/v3/publications/www.ba.no/gfx/small.svg
+finished https://r.api.no/local/v3/publications/www.ba.no/gfx/small-positive.svg
+finished https://r.acdn.no/brandheader/default/classifieds-stillingledig.svg
+finished https://r.acdn.no/brandheader/default/classifieds-derdubor.svg
+finished https://r.acdn.no/brandheader/default/classifieds-eiendom.svg
+finished https://r.acdn.no/brandheader/default/redaktoransvar.svg
+finished https://r.api.no/local/v3/publications/www.ba.no/gfx/small.svg
+finished https://www.e-pages.dk/finnmarken/19642/teasers/small.jpg
+finished https://www.e-pages.dk/ba_no/7447/teasers/small.jpg
+finished https://www.e-pages.dk/avisanordland/4215/teasers/small.jpg
+finished https://www.e-pages.dk/ba_no/7447/teasers/small.jpg
+finished https://www.e-pages.dk/rb_no/6283/teasers/small.jpg
