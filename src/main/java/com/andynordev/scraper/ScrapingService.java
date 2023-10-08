@@ -22,7 +22,7 @@ public class ScrapingService {
         }
 
         Elements images = doc.getElementsByTag("img");
-        ArrayList<String> imageList = new ArrayList();
+        ArrayList<String> imageList = new ArrayList<>();
         for (int i = 0; i< images.size();i++) {
             for (String attr : imageAttrs) {
                 String absSrc = images.get(i).attr(attr);

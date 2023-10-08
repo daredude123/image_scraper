@@ -4,15 +4,15 @@ import com.andynordev.config.Configuration;
 import com.andynordev.download.DownloadService;
 import com.andynordev.scraper.ScrapingService;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadPoolExecutor;
+import java.io.File;
+import java.util.*;
 
 public class App
 {
     static String[] urlList;
     static String saveDirectory;
+    private static HashMap<String, String> urlDirMap;
+
     public static void main( String[] args )
     {
         System.out.println(Configuration.getCurrentDir());
@@ -20,32 +20,19 @@ public class App
         
         if(checkArgs(args)) {
             ScrapingService scrapingService = new ScrapingService();
-            for (String url : args[0].split(" ")) {
-                imageUrls = scrapingService.getImages(url);
-            }
-            if (imageUrls == null || imageUrls.size() == 0) {
-                System.out.println("No images to download... Exiting");
-                return;
+            for (Map.Entry<String, String> entry : urlDirMap.entrySet()) {
+                imageUrls = scrapingService.getImages(entry.getKey());
+                if (imageUrls == null || imageUrls.size() == 0) {
+                    System.out.println("No images to download... Exiting");
+                    return;
+                }
+                for (int i = 0; i < imageUrls.size(); i++) {
+                    String imageUrl = imageUrls.get(i);
+                    String imageName = i+"_image";
+                    new Thread(new DownloadService(imageUrl, entry.getKey(), imageName)).start();
+                }
             }
             System.out.printf("Starting download of %s images", imageUrls.size());
-            for (int i = 0; i < imageUrls.size(); i++) {
-                String imageUrl = imageUrls.get(i);
-                String imageName = i+"_image";
-                new Thread(new DownloadService(imageUrl, saveDirectory, imageName)).start();
-            }
-        }
-    }
-
-    private static void checkForDuplicateNames(String[] imageUrls) {
-        String tmp = "";
-        for (int i = 0; i < imageUrls.length; i++) {
-            String url = imageUrls[i];
-            String fileName = url.substring(url.lastIndexOf("/"));
-            if (tmp == fileName) {
-                
-            }
-            tmp = fileName;
-
         }
     }
 
@@ -56,9 +43,11 @@ public class App
         } else {
             urlList = args[0].split(" ");
             saveDirectory = args[1] == null ? Configuration.getCurrentDir() : args[1];
-            System.out.println("urls:");
+            urlDirMap = new HashMap<>();
             for (String x : urlList) {
-                System.out.println(x);
+                String dir = saveDirectory+File.separator+x;
+                new File(dir).mkdirs();
+                urlDirMap.put(x,dir);
             }
             System.out.println("save dir : " + "\""+saveDirectory+"\"");
             return true;
