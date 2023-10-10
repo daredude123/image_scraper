@@ -36,7 +36,7 @@ public class App
         }
     }
 
-    private static boolean checkArgs(String[] args) {
+    public static boolean checkArgs(String[] args) {
         if (args.length != 2) {
             System.out.println("missing urls list or image directory");
             return false;
