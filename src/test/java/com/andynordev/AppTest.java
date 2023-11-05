@@ -1,12 +1,9 @@
 package com.andynordev;
 
-import static org.junit.Assert.assertTrue;
+import java.util.Arrays;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
-
-import java.util.Arrays;
 
 /**
  * Unit test for simple App.
@@ -15,14 +12,17 @@ public class AppTest
 {
 
     String[] args = {"https://nrk.no https://ba.no", "/home/andreas/test"};
+    String[] expectedUrlList = {"https://nrk.no", "https://ba.no"};
+    String expectedSaveDir = "/home/andreas/test";
 
     @Test
     public void shouldAnswerWithTrue()
     {
         App.checkArgs(args);
-        System.out.println(Arrays.toString(App.urlList));
-        System.out.println(App.saveDirectory);
-        Assert.assertEquals("/home/andreas/test", App.saveDirectory);
-        Assert.assertEquals("[https://nrk.no, https://ba.no]", Arrays.toString(App.urlList));
+        System.out.println("url list : "+Arrays.toString(App.urlList));
+        System.out.println("save directory : "+App.saveDirectory);
+        
+        Assert.assertEquals(expectedSaveDir, App.saveDirectory);
+        Assert.assertEquals(expectedUrlList, App.urlList);
     }
 }

@@ -37,12 +37,15 @@ public class App
     }
 
     public static boolean checkArgs(String[] args) {
+        System.out.println("ARGS : "+ Arrays.toString(args));
+        
         if (args.length != 2) {
             System.out.println("missing urls list or image directory");
             return false;
         } else {
             urlList = args[0].split(" ");
             saveDirectory = args[1] == null ? Configuration.getCurrentDir() : args[1];
+            System.out.println("save DIR "+ saveDirectory);
             urlDirMap = new HashMap<>();
             for (String x : urlList) {
                 String dir = saveDirectory+File.separator+x;
