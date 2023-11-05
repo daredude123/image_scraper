@@ -20,8 +20,8 @@ public class App
         
         if(checkArgs(args)) {
             ScrapingService scrapingService = new ScrapingService();
-            for (Map.Entry<String, String> entry : urlDirMap.entrySet()) {
-                imageUrls = scrapingService.getImages(entry.getKey());
+            for (Map.Entry<String, String> urlDirMapEntry : urlDirMap.entrySet()) {
+                imageUrls = scrapingService.getImages(urlDirMapEntry.getKey());
                 if (imageUrls == null || imageUrls.size() == 0) {
                     System.out.println("No images to download... Exiting");
                     return;
@@ -44,11 +44,13 @@ public class App
             return false;
         } else {
             urlList = args[0].split(" ");
+            System.out.println(args[1]);
             saveDirectory = args[1] == null ? Configuration.getCurrentDir() : args[1];
             System.out.println("save DIR "+ saveDirectory);
             urlDirMap = new HashMap<>();
             for (String x : urlList) {
                 String dir = saveDirectory+File.separator+x;
+                System.out.println("MAP dir " + dir);
                 new File(dir).mkdirs();
                 urlDirMap.put(x,dir);
             }

@@ -32,9 +32,11 @@ public class DownloadService implements Runnable {
         System.out.println("downloading " +url);
         String fileExt = !url.substring(url.lastIndexOf(".")).isEmpty() ? url.substring(url.lastIndexOf(".")) : "";
 
-        outputDirectory = Configuration.createDir(outputDirectory);
-        String fullPath = outputDirectory+"/"+this.imageName+"."+fileExt;
+        Configuration.createDir(outputDirectory);
+        String fullPath = this.outputDirectory+"/"+this.imageName+fileExt;
         System.out.println("saving as : " + fullPath);
+        System.out.println("image name " + this.imageName);
+        System.out.println("image url " + this.imageUrl);
         try (BufferedInputStream in = new BufferedInputStream(new URL(url).openStream());
              FileOutputStream fileOutputStream = new FileOutputStream(fullPath)) {
 
